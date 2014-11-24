@@ -1,0 +1,7 @@
+Lemming:
+  AssetProcessor:
+    MediaTypes:
+      #image/jpeg:
+      #  - /opt/local/bin/jpegoptim --strip-all -f -q {}
+      #image/png:
+      #  - /opt/local/bin/optipng -fix -q {}

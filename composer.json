@@ -1,0 +1,14 @@
+{
+	"name": "lemming/assetprocessor",
+	"type": "typo3-flow-package",
+	"description": "Asset processing for TYPO3 Flow. A typcial use case is image optimization with optipng or jpegoptim.",
+	"license": "LGPL-3.0+",
+	"require": {
+		"typo3/flow": "*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Lemming\\AssetProcessor": "Classes"
+		}
+	}
+}
