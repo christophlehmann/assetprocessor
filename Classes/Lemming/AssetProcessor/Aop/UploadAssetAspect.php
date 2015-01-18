@@ -19,7 +19,7 @@ class UploadAssetAspect {
 	 *
 	 * @param  \TYPO3\Flow\Aop\JoinPointInterface $joinPoint: The current join point
 	 * @return void
-	 * @Flow\Before("method(TYPO3\Flow\Resource\ResourceManager->importUploadedResource())")
+	 * @Flow\Before("method(TYPO3\Flow\Resource\ResourceManager->importUploadedResource()) && setting(Lemming.AssetProcessor.ProcessOnUpload)")
 	 */
 	public function processUploadedFile(\TYPO3\Flow\Aop\JoinPointInterface $joinPoint) {
 		$arguments = $joinPoint->getMethodArguments();

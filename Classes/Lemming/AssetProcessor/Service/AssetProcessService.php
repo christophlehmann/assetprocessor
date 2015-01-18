@@ -36,11 +36,13 @@ class AssetProcessService {
 	public function processFileByMediaType($file, $mediaType) {
 		if (isset($this->settings['MediaTypes'][$mediaType]) && count($this->settings['MediaTypes'][$mediaType]) > 0) {
 			foreach($this->settings['MediaTypes'][$mediaType] as $command) {
-				$command = str_replace('{}', escapeshellarg($file), $command);
-				$output = shell_exec($command . ' 2>&1');
-				$this->logger->log('Executed: ' . $command, LOG_INFO);
-				if(!empty($output)) {
-					$this->logger->log('Output was: ' . $output, LOG_INFO);
+				$command = str_replace('{}', escapeshellarg($file), $command) . ' 2>&1';
+				exec($command, $output, $exitCode);
+				if ($exitCode != 0) {
+					$this->logger->log('Executed: ' . $command, LOG_ERR);
+					foreach($output as $line) {
+						$this->logger->log('Ouput was: ' . $line, LOG_ERR);
+					}
 				}
 			}
 		}

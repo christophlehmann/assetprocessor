@@ -1,5 +1,6 @@
 Lemming:
   AssetProcessor:
+    ProcessOnUpload: TRUE
     MediaTypes:
       #image/jpeg:
       #  - /opt/local/bin/jpegoptim --strip-all -f -q {}
